@@ -1,8 +1,11 @@
 import './App.css'
-
+import Main from './layout/Main'
+import Index from './pages'
 function App() {
 return (
-   <p className=''>Hello world</p>
+   <Main>
+    <Index/>
+   </Main>
   )
 }
 
