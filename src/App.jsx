@@ -1,11 +1,11 @@
 import './App.css'
-import Main from './layout/Main'
-import Index from './pages'
+
+import Index from './pages/index'
 function App() {
 return (
-   <Main>
+   
     <Index/>
-   </Main>
+   
   )
 }
 
