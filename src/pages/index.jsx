@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../components/navbar';
 import Carrousel from '../components/carrousel';
+import Footer from '../components/footer';
 export default function index() {
   return (
     <div className='bg-[url("/Background.png")] w-full h-[60vh]'>
@@ -12,6 +13,8 @@ export default function index() {
       <button  className='bg-[white] w-[12rem] h-[3rem] text-[#ffbb3d] text-[1.2rem] font-bold rounded-[5px]'>Sign in!</button>
     </div>
     <Carrousel/>
+    <Footer/>
     </div>
+    
   );
 }
