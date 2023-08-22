@@ -1,9 +1,11 @@
 import React from 'react';
-
-export default function router() {
-  return (
-    <div>
-      
-    </div>
-  );
-}
+import { createBrowserRouter } from "react-router-dom";
+import Index from '../src/pages/index'
+import Footer from '../src/components/footer';
+const router = createBrowserRouter([
+  {
+      path:"/",
+      element:<Index/>,
+  },
+ ])
+  export default router
