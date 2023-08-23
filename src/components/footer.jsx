@@ -1,12 +1,13 @@
 import React from 'react';
+import { Link as Anchor } from 'react-router-dom';
 export default function footer() {
   return (
     <footer className=' w-full h-[45vh] flex flex-col'>
     <img className='w-full h-[30vh] object-cover rounded-b-[12rem]' src="./public/footer.png" alt="" />
     <div className='w-full h-[15vh] flex justify-around px-[8rem] items-center'>
-    <p>Home</p>
-    <p>Manga</p>
-    <img className='w-[8rem] h-[3rem]' src="./public/logoNav.png" alt="" />
+    <Anchor to='/'><p className='text-[1.2rem]'>Home</p></Anchor>
+    <Anchor><p className='text-[1.2rem]'>Manga</p></Anchor>
+    <Anchor to='/'><img className='w-[8rem] h-[3rem]' src="./public/logoNav.png" alt="" /></Anchor>
     <div className='flex flex-col h-auto gap-4'>
       <div className='flex w-auto justify-around'>
         <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 8 19">
