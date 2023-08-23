@@ -17,10 +17,10 @@ export default function Navbar() {
         <img className='w-[3.5rem]' src="./public/menu.png" alt="" />
       </button>
       {openDraw && (
-        <div className='w-[30%] h-[185vh] bg-white absolute py-[45rem] px-[1.7rem]'>
+        <div className='w-[30%] h-[189.7vh] absolute py-[46rem] px-[1.7rem] bg-[#FF5722] z-10'>
           <button onClick={closeNavbar}>
             <svg
-              className='w-6 h-6 text-[#FF5722] dark:text-white'
+              className='w-6 h-6 text-[white] dark:text-white'
               aria-hidden='true'
               xmlns='http://www.w3.org/2000/svg'
               fill='none'
@@ -35,13 +35,13 @@ export default function Navbar() {
               />
             </svg>
           </button>
-          <div className='h-[50vh] mt-[2rem] flex flex-col gap-[3rem]'>
-            <Anchor to='/' className='hover:text-[#5353aa]'>Home</Anchor>
-            <Anchor to='footer' className='hover:text-[#5353aa]'>Mangas</Anchor>
-            <Anchor to='/' className='hover:text-[#5353aa]'>My mangas</Anchor>
-            <Anchor to='/' className='hover:text-[#5353aa]'>Sign In</Anchor>
-            <Anchor to='/' className='hover:text-[#5353aa]'>Register</Anchor>
-            <Anchor to='/' className='hover:text-[#5353aa]'>Log out</Anchor>
+          <div className='h-[50vh] mt-[2rem] flex flex-col gap-[3rem] bg-[#FF5722]'>
+            <Anchor to='/' className='hover:text-[#131313] text-[white]'>Home</Anchor>
+            <Anchor to='footer' className='hover:text-[#131313]  text-[white]'>Mangas</Anchor>
+            <Anchor to='/' className='hover:text-[#131313]  text-[white]'>My mangas</Anchor>
+            <Anchor to='/LogIn' className='hover:text-[#131313]  text-[white]'>Sign In</Anchor>
+            <Anchor to='/Register' className='hover:text-[#131313]  text-[white]'>Register</Anchor>
+            <Anchor to='' className='hover:text-[#131313]  text-[white]'>Log out</Anchor>
           </div>
         </div>
       )}

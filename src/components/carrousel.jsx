@@ -28,18 +28,18 @@ console.log(categorias);
         </button>
         <div className=' flex justify-between w-full px-[3rem]'>
           <img
-            className='w-[10rem] h-[15rem] mb-[4rem]'
-            src={categorias[currentSlide].character_photo}
+            className='w-[10rem] h-[15rem] mb-[3rem]'
+            src={categorias[currentSlide]?.character_photo}
             
           />
           <img
             className='w-[10rem] mt-[0.5rem] h-[15rem]'
-            src={categorias[currentSlide].cover_photo}
+            src={categorias[currentSlide]?.cover_photo}
             
           />
           <div className=' w-[50%] px-[4rem] flex flex-col justify-center gap-5'>
-            <p className='text-[white] font-bold text-[1.5rem]'>{categorias[currentSlide].name}</p>
-            <p className='text-[white]'>{categorias[currentSlide].description}</p>
+            <p className='text-[white] font-bold text-[2.3rem]'>{categorias[currentSlide]?.name}</p>
+            <p className='text-[white] text-[1.2rem]'>{categorias[currentSlide]?.description}</p>
           </div>
         </div>
         <button className='bg-[#ffffff9a] p-[0.5rem] rounded-[50px]' onClick={handleNextSlide}>
