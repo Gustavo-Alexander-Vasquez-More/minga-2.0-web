@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import Navbar from '../components/navbar';
 import {useDispatch} from 'react-redux';
 import usersActions from '../redux/actions/usersActions';
+import Swal from 'sweetalert2';
 export default function register() {
 const [emailValue, setEmailValue]=useState('')
 const [passwordValue, setPasswordValue]=useState('')
@@ -22,14 +23,29 @@ function capturePassword() {
     setPhotoValue(inputPhoto.current.value);
   }
 function submit() {
-    const datos = {
-      email: emailValue,
-      password: passwordValue,
-      photo: photoValue
+    try {
+        const datos = {
+            email: emailValue,
+            password: passwordValue,
+            photo: photoValue
     };
-  
-    dispatch(usersActions.create_users(datos));
-  }
+dispatch(usersActions.create_users(datos));
+
+Swal.fire({
+    position: 'center',
+    icon: 'success',
+    title: 'Successful registration!',
+    showConfirmButton: false,
+    timer: 1500
+  })
+} catch (error) {
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!',
+    })
+}
+}
 
 return (
 <div className='w-full h-screen flex'>
