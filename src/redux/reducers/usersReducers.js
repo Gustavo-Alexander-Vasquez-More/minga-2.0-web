@@ -1,17 +1,26 @@
 import { createReducer } from "@reduxjs/toolkit";
-import usersActions from "../actions/usersActions.js"; // Asegúrate de que el nombre coincida exactamente
-const {create_users}=usersActions
+import usersActions from "../actions/usersActions.js";
+
+const { create_users, LogIn_users } = usersActions;
+
 const initialState = {
   users: []
 };
 
 const usersReducer = createReducer(initialState, (builder) => {
-  builder.addCase(create_users.fulfilled, (state, action) => { // Usa read_categories.fulfilled
-    return {
-      ...state,
-      users: action.payload
-    };
-  });
+  builder
+    .addCase(create_users.fulfilled, (state, action) => {
+      return {
+        ...state,
+        users: action.payload
+      };
+    })
+    .addCase(LogIn_users.fulfilled, (state, action) => {
+      return {
+        ...state,
+        users: action.payload
+      };
+    });
 });
 
-export default usersReducer ;
+export default usersReducer;
