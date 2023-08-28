@@ -2,15 +2,17 @@ import React, { useEffect, useRef, useState } from 'react';
 import usersActions from '../redux/actions/usersActions';
 import Navbar from '../components/navbar';
 import { useDispatch, useSelector } from 'react-redux';
-
-import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+
 export default function logIn() {
 const [emailValue, setEmailValue]=useState('')
 const [passwordValue, setPasswordValue]=useState('')
+const [action, setAction]=useState('')
 const navigate=useNavigate()
 let inputEmail=useRef()
 let inputPassword=useRef()
+
 const dispatch=useDispatch()
 function captureEmail(){
   setEmailValue(inputEmail.current.value)
@@ -18,34 +20,33 @@ function captureEmail(){
 function capturePassword() {
   setPasswordValue(inputPassword.current.value);
 }
-function Submit(){
-try {
-  const datos = {
-    email: emailValue,
-    password: passwordValue,
-};
-  dispatch(usersActions.LogIn_users(datos))  
+async function Submit() {
+  try {
+    const datos = {
+      email: emailValue,
+      password: passwordValue,
+    };
+
+    await dispatch(usersActions.LogIn_users(datos)); // Espera a que la acción se complete
+
+    const user = localStorage.getItem('token');
+    if (user) {
+  navigate('/')
   Swal.fire({
     position: 'center',
     icon: 'success',
     title: 'Successful Loged in!',
     showConfirmButton: false,
-    timer: 1500
+    timer: 3500
   })
- 
-  navigate('/'); 
+}else{
+  navigate('/LogIn')
+}
 } catch (error) {
-  Swal.fire({
-    icon: 'error',
-    title: 'Oops...',
-    text: 'Something went wrong!',
-})
+console.log(error);
 }
-
 }
-
-
-  return (
+return (
     <div className='w-full h-screen flex'>
 <div className='absolute w-full'>
 <Navbar/>
