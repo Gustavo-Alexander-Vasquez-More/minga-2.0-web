@@ -1,8 +1,13 @@
+import axios from 'axios';
 import React, { useState } from 'react';
-import { Link as Anchor } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Link as Anchor, useNavigate } from 'react-router-dom';
+
+import Swal from 'sweetalert2';
 export default function Navbar() {
   const [openDraw, setOpenDraw] = useState(false);
-
+  const navigate = useNavigate();
+const dispatch=useDispatch()
   function openNavbar() {
     setOpenDraw(true);
   }
@@ -10,7 +15,42 @@ export default function Navbar() {
   function closeNavbar() {
     setOpenDraw(false);
   }
+const token = localStorage.getItem('token');
+  const photoUser = localStorage.getItem('photo');
+console.log(photoUser);
+  const emailUser = localStorage.getItem('user');
+  
+  async function LogOut() {
+    try {
+      await axios.post('http://localhost:8083/api/users/LogOut', null, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+  
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      localStorage.removeItem('photo');
+  
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Logout successful!',
+        showConfirmButton: false,
+        timer: 1500,
+      });
+  
+      // Esperar un momento para que los datos se eliminen
+      await new Promise(resolve => setTimeout(resolve, 1000)); // Puedes ajustar el tiempo según sea necesario
+  navigate('/LogIn');
 
+    } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Failed to sign out!',
+        timer: 1500,
+      });
+    }
+  };
   return (
     <div className='w-full h-[10vh] flex items-center justify-between '>
       <button onClick={openNavbar} className='ml-[1rem]'>
@@ -36,12 +76,26 @@ export default function Navbar() {
             </svg>
           </button>
           <div className='h-[50vh] mt-[2rem] flex flex-col gap-[3rem] bg-[#FF5722]'>
-            <Anchor to='/' className='hover:text-[#131313] text-[white]'>Home</Anchor>
-            <Anchor to='footer' className='hover:text-[#131313]  text-[white]'>Mangas</Anchor>
-            <Anchor to='/' className='hover:text-[#131313]  text-[white]'>My mangas</Anchor>
-            <Anchor to='/LogIn' className='hover:text-[#131313]  text-[white]'>Sign In</Anchor>
-            <Anchor to='/Register' className='hover:text-[#131313]  text-[white]'>Register</Anchor>
-            <Anchor to='' className='hover:text-[#131313]  text-[white]'>Log out</Anchor>
+            {token ? (
+              <>
+                <div className='w-full h-[10vh] flex flex-col'>
+                  <img className='w-[2rem] h-[2rem]' src={photoUser} alt="none" />
+                  <p className='text-[white]'>{emailUser}</p>
+                </div>
+                <Anchor to='/' className='hover:text-[#131313] text-[white]'>Home</Anchor>
+                <Anchor to='footer' className='hover:text-[#131313]  text-[white]'>Mangas</Anchor>
+                <Anchor to='/' className='hover:text-[#131313]  text-[white]'>My mangas</Anchor>
+                <Anchor onClick={LogOut} to='' className='hover:text-[#131313]  text-[white]'>Log out</Anchor>
+              </>
+            ) : (
+              <>
+                <Anchor to='/' className='hover:text-[#131313] text-[white]'>Home</Anchor>
+                <Anchor to='footer' className='hover:text-[#131313]  text-[white]'>Mangas</Anchor>
+                <Anchor to='/' className='hover:text-[#131313]  text-[white]'>My mangas</Anchor>
+                <Anchor to='/LogIn' className='hover:text-[#131313]  text-[white]'>Sign In</Anchor>
+                <Anchor to='/Register' className='hover:text-[#131313]  text-[white]'>Register</Anchor>
+              </>
+            )}
           </div>
         </div>
       )}
