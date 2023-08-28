@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Index from '../src/pages/index'
 import Register from '../src/pages/register';
 import LogIn from '../src/pages/logIn'
+import CreateManga from '../src/pages/createManga';
 const router = createBrowserRouter([
   {
       path:"/",
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
   {
     path:"/LogIn",
     element:<LogIn/>, 
+  },
+  {
+    path:"/createManga",
+    element:<CreateManga/>, 
   },
  ])
   export default router
