@@ -1,13 +1,16 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-const authorProtect=()=>{
-const navigate=useNavigate()
-let authorRole=localStorage.getItem('role')
-if(authorRole =='1' || authorRole =='2'){
-    navigate('/createManga')
-}else{
-navigate('/notAllow')
+import NotAllow from '../src/pages/notAllow';
+import CreateManga from '../src/pages/createManga';
+const AuthorProtect = ({ page, role, notPage }) => {
+role=localStorage.getItem('role')
+notPage=<NotAllow/>
+page=<CreateManga/>
+if (role === '1' || role === '2') {
+  return page;
+} else if(role > '2' || role==='0') {
+  return notPage
 }
+};
 
-}
-export default authorProtect
+export default AuthorProtect;

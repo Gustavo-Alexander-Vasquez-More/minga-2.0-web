@@ -20,14 +20,7 @@ const token = localStorage.getItem('token');
   const photoUser = localStorage.getItem('photo');
 console.log(photoUser);
   const emailUser = localStorage.getItem('user');
-  function userRole(){
-  const role=localStorage.getItem('role')
-if(role==='1' || role==='2'){
-    navigate('/createManga')
-  }else{
-    navigate('/notAllow')
-  }
-}
+ 
   async function LogOut() {
     try {
       await axios.post('http://localhost:8083/api/users/LogOut', null, {
@@ -99,7 +92,7 @@ if(role==='1' || role==='2'){
                 <Anchor to='/' className='hover:text-[#131313]  text-[white] flex gap-3'><svg class="w-6 h-6 text-[white] dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 19">
     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4C5.5-1.5-1.5 5.5 4 11l7 7 7-7c5.458-5.458-1.542-12.458-7-7Z"/>
   </svg>My mangas</Anchor>
-                <Anchor  onClick={userRole} className='hover:text-[#131313]  text-[white] flex gap-3'><svg class="w-6 h-6 text-[white] dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                <Anchor  to={'/createManga'} className='hover:text-[#131313]  text-[white] flex gap-3'><svg class="w-6 h-6 text-[white] dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 5.757v8.486M5.757 10h8.486M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
   </svg> Create Manga</Anchor>
                 <Anchor onClick={LogOut} to='' className='hover:text-[#131313]  text-[white] flex gap-3'><svg class="w-6 h-6 text-[white] dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 18">

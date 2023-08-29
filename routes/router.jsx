@@ -20,10 +20,10 @@ const router = createBrowserRouter([
     element:<LogIn/>, 
   },
   {
-    path: "/createManga",
-    element: <CreateManga />,
-   // Use canActivate to protect the route
+    path: '/createManga',
+    element: <AuthorProtect><CreateManga /></AuthorProtect>
   },
+
   {
     path:"/notAllow",
     element:<NotAllow/>, 
