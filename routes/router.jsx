@@ -4,6 +4,8 @@ import Index from '../src/pages/index'
 import Register from '../src/pages/register';
 import LogIn from '../src/pages/logIn'
 import CreateManga from '../src/pages/createManga';
+import NotAllow from '../src/pages/notAllow'
+import AuthorProtect from './authorProtected';
 const router = createBrowserRouter([
   {
       path:"/",
@@ -18,8 +20,13 @@ const router = createBrowserRouter([
     element:<LogIn/>, 
   },
   {
-    path:"/createManga",
-    element:<CreateManga/>, 
+    path: "/createManga",
+    element: <CreateManga />,
+   // Use canActivate to protect the route
+  },
+  {
+    path:"/notAllow",
+    element:<NotAllow/>, 
   },
  ])
   export default router

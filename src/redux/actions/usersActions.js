@@ -29,6 +29,7 @@ const LogIn_users = createAsyncThunk(
       localStorage.setItem('token', token);
       localStorage.setItem('user', data.response.user); 
       localStorage.setItem('photo', data.response.photo);
+      localStorage.setItem('role', data.response.role )
       console.log(data.response);
     return data.response;
     } catch (error) {
