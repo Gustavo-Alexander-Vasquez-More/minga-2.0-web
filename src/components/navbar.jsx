@@ -16,10 +16,18 @@ const dispatch=useDispatch()
     setOpenDraw(false);
   }
 const token = localStorage.getItem('token');
+
   const photoUser = localStorage.getItem('photo');
 console.log(photoUser);
   const emailUser = localStorage.getItem('user');
-  
+  function userRole(){
+  const role=localStorage.getItem('role')
+if(role==='1' || role==='2'){
+    navigate('/createManga')
+  }else{
+    navigate('/notAllow')
+  }
+}
   async function LogOut() {
     try {
       await axios.post('http://localhost:8083/api/users/LogOut', null, {
@@ -78,8 +86,8 @@ console.log(photoUser);
           <div className='h-[50vh] mt-[2rem] flex flex-col gap-[3rem] bg-[#FF5722]'>
             {token ? (
               <>
-                <div className='py-[1.3rem] w-full h-[15vh] flex gap-5 items-center bg-[url("https://img.pikbest.com/backgrounds/20190725/color-gradient-speed-line-banner-background_2758552.jpg!sw800")]'>
-                  <img className='w-[3.5rem] h-[3.5rem]' src={photoUser} alt="none" />
+                <div className=' rounded-[5px] py-[1.3rem] px-[1rem] w-full h-[15vh] flex gap-5 items-center bg-[url("https://img.pikbest.com/backgrounds/20190725/color-gradient-speed-line-banner-background_2758552.jpg!sw800")]'>
+                  <img className=' rounded-[5px] w-[4rem] h-[4rem]' src={photoUser} alt="none" />
                   <p className='text-[white]'>{emailUser}</p>
                 </div>
                 <Anchor to='/' className='hover:text-[#131313] text-[white] flex gap-3'><svg class="w-6 h-6 text-[white] dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -91,7 +99,7 @@ console.log(photoUser);
                 <Anchor to='/' className='hover:text-[#131313]  text-[white] flex gap-3'><svg class="w-6 h-6 text-[white] dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 19">
     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4C5.5-1.5-1.5 5.5 4 11l7 7 7-7c5.458-5.458-1.542-12.458-7-7Z"/>
   </svg>My mangas</Anchor>
-                <Anchor to='/createManga' className='hover:text-[#131313]  text-[white] flex gap-3'><svg class="w-6 h-6 text-[white] dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                <Anchor  onClick={userRole} className='hover:text-[#131313]  text-[white] flex gap-3'><svg class="w-6 h-6 text-[white] dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 5.757v8.486M5.757 10h8.486M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
   </svg> Create Manga</Anchor>
                 <Anchor onClick={LogOut} to='' className='hover:text-[#131313]  text-[white] flex gap-3'><svg class="w-6 h-6 text-[white] dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 18">
