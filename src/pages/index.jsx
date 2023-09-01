@@ -18,9 +18,11 @@ export default function index() {
       <p className=' text-[white] text-[1.5rem]'>Explore our varieties</p>
       <p className=' text-[white] text-[1.2rem]'>#MingaLove❤</p>
       {token ? (
+  <Anchor to='/mangas'>
   <button className='bg-[white] w-[12rem] h-[3rem] text-[#ffbb3d] text-[1.2rem] font-bold rounded-[5px]'>
     Explore mangas!
   </button>
+  </Anchor>
 ) : (
   <Anchor to='/LogIn'>
     <button className='bg-[white] w-[12rem] h-[3rem] text-[#ffbb3d] text-[1.2rem] font-bold rounded-[5px]'>

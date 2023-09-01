@@ -28,5 +28,18 @@ const create_manga=createAsyncThunk(
         }
     }
 )
-const mangaActions={create_manga}
+const read_pag=createAsyncThunk(
+  'read_pag',
+  async(page)=>{
+    try {
+      const {data}=await axios.get('http://localhost:8083/api/mangas/pagMangas', page)
+      console.log(data.response);
+      return data.response
+    } catch (error) {
+      console.log(error);
+    return null
+    }
+  }
+)
+const mangaActions={create_manga, read_pag}
 export default mangaActions
