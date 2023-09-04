@@ -2,7 +2,10 @@ import { createReducer } from "@reduxjs/toolkit";
 import mangaActions from "../actions/mangaAction.js";
 const {create_manga, read_pag}=mangaActions
 const initialState = {
-    mangas: []
+    mangas: [],
+    prevPage:null,
+    nextPage:null,
+    currentPage:1
   };
 
 const mangaReducer=createReducer(initialState, (builder)=>{
@@ -16,7 +19,10 @@ const mangaReducer=createReducer(initialState, (builder)=>{
     .addCase(read_pag.fulfilled, (state, action)=>{
       return {
           ...state,
-          mangas: action.payload
+          mangas: action.payload.mangas,
+          prevPage:action.payload.prevPage,
+          nextPage:action.payload.nextPage,
+          currentPage:action.payload.currentPage
         };
   })
 }) 
