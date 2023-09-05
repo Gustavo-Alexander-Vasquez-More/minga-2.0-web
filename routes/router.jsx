@@ -7,6 +7,7 @@ import CreateManga from '../src/pages/createManga';
 import NotAllow from '../src/pages/notAllow'
 import AuthorProtect from './authorProtected';
 import Mangas from '../src/pages/mangas';
+import Chapters from '../src/pages/chapters';
 const router = createBrowserRouter([
   {
       path:"/",
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
   {
     path:"/mangas",
     element:<Mangas/>, 
+  },
+  {
+    path:"/chapters/:manga_id",
+    element:<Chapters/>, 
   },
  ])
   export default router

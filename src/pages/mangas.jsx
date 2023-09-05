@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Navbar from '../components/navbar';
 import { useDispatch, useSelector } from 'react-redux';
 import mangaActions from '../redux/actions/mangaAction.js';
+import { Link as Anchor } from 'react-router-dom';
+import chapters from './chapters';
 
 export default function mangas() {
 const [currentPage, setCurrentPage] = useState(parseInt(localStorage.getItem('currentPageTech')) || 1);
@@ -49,7 +51,8 @@ return (
     <button disabled={manga.nextPage === null} onClick={handleNext} className='bg-[#F97316] text-center py-[0.5rem] px-[2rem] rounded-[10px] text-[white] disabled:bg-[gray]'>Next</button>
   </div>
 {mangas.map((manga) => (
-    <div key={manga._id} className='w-[30rem] h-auto rounded-[10px] flex border-solid border-[2px] border-[#b3b2b2]'>
+    <Anchor to={`/chapters/${manga._id}`}>
+      <div key={manga._id} className='w-[30rem] h-auto rounded-[10px] flex border-solid border-[2px] border-[#b3b2b2]'>
       <div className=' rounded-[10px] w-[50%] h-[25vh] bg-[white] flex flex-col items-center justify-around py-[2rem]'>
         <p className='text-[1.2rem] font-semibold'>{manga.title}</p>
         <p className='font-semibold text-[1.2rem] text-[#F97316]'>{manga.category_id.name}</p>
@@ -59,6 +62,7 @@ return (
         <img className='rounded-[10px] h-[25vh] w-full object-cover rounded-l-[8rem]' src={manga.cover_photo} alt="" />
       </div>
     </div>
+      </Anchor>
   ))}
 </div>
 <div className='w-[40%] bg-[white] h-[10vh] flex justify-around items-center mt-[2rem] '>
