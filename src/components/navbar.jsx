@@ -107,8 +107,12 @@ console.log(photoUser);
   <Anchor to='/mangas' className='hover:text-[#131313]  text-[white] flex  gap-3'><svg class="w-6 h-6 text-[white] dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
   </svg>View Mangas</Anchor>
-                <Anchor to='/LogIn' className='hover:text-[#131313]  text-[white]'>Sign In</Anchor>
-                <Anchor to='/Register' className='hover:text-[#131313]  text-[white]'>Register</Anchor>
+                <Anchor to='/LogIn' className='hover:text-[#131313]  text-[white] flex gap-3'><svg class="w-6 h-6 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 18">
+    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm-2 3h4a4 4 0 0 1 4 4v2H1v-2a4 4 0 0 1 4-4Z"/>
+  </svg> Sign In</Anchor>
+                <Anchor to='/Register' className='hover:text-[#131313]  text-[white] flex gap-3'><svg class="w-6 h-6 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 18">
+    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 8h6m-3 3V5m-6-.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0ZM5 11h3a4 4 0 0 1 4 4v2H1v-2a4 4 0 0 1 4-4Z"/>
+  </svg> Register</Anchor>
               </>
             )}
           </div>
